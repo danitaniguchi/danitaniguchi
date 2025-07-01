@@ -1,0 +1,89 @@
+{
+    "about": [
+        "I’m a Brazilian-born web developer now thriving in the United States tech scene, with a Bachelor’s in Civil Engineering from the University of São Paulo. Over the past {year} years, I’ve honed my skills in Drupal front-end development, building responsive, accessible, and cross-browser sites for a diverse portfolio of clients.",
+        "My work focuses on building robust, scalabe front-end experiences using technologies like React, TypeScript, and modern CSS frameworks. I enjoy working in multidisciplinary teams, continuously learning, and turning ideas into real-world applications.",
+        "My passion lies in translating designs into pixel‑perfect, performant web interfaces—always prioritizing accessibility and user experience. I’m enthusiastic about clean code, inclusive design, and continuous learning."
+    ],
+    "skills": {
+        "frontend": [
+            "HTML",
+            "Twig",
+            "CSS/SCSS",
+            "JavaScript",
+            "TypeScript",
+            "React.js",
+            "Next.js",
+            "Bootstrap",
+            "Tailwind",
+            "JQuery",
+            "npm/gulp/webpack"
+        ],
+        "backend": [
+            "PHP",
+            "Node.js",
+            "Drupal CMS",
+            "Strapi CMS",
+            "MySQL",
+            "Heroku",
+            "Acquia",
+            "Pantheon",
+            "Platform.sh",
+            "Amazon S3",
+            "Pardot",
+            "Jira/Asana",
+            "Git/Github/Gitlab"
+        ],
+        "practices": [
+            "Accessibility",
+            "SEO",
+            "Cross-browser compatibility",
+            "Performance Optimization",
+            "Responsive & Mobile-First Design",
+            "Kanban/Scrum"
+        ]
+    },
+    "projects": [
+        {
+            "name": "Adomi",
+            "description": "Led the front-end development and platform configuration for Adomi, an event-focused buffet service marketplace. Built the entire website from scratch using Next.js frameworks and a headless Strapi CMS architecture.",
+            "skills": [
+                "Next.js",
+                "Strapi",
+                "Node.js",
+                "E-commerce"
+            ],
+            "src": "/adomi.png",
+            "href": "https://www.adomi.com.br/",
+            "alt": "",
+            "ariaLabel": "Go to Adomi website in a new tab"
+        },
+        {
+            "name": "Frontier Communications",
+            "description": "Contributed to the development of multiple web solutions for Frontier Communications, including the Small Business platform, Partner Portal, and Buy Flow e-commerce experience. Worked closely with cross-functional teams to deliver modular, scalable React components integrated with Sitecore JSS.",
+            "skills": [
+                "React.js",
+                "Sitecore",
+                "E-commerce",
+                "Kanban"
+            ],
+            "src": "/frontier.png",
+            "href": "https://frontier.com/",
+            "alt": "",
+            "ariaLabel": "Go to Frontier Communications website in a new tab"
+        },
+        {
+            "name": "Comcast",
+            "description": "Contributed to the development and enhancement of Comcast Technology Solutions’ corporate website. Focused on building accessible, improving page structure and responsiveness.",
+            "skills": [
+                "Drupal",
+                "Twig",
+                "Javascript",
+                "SCSS"
+            ],
+            "src": "/comcast.png",
+            "href": "https://www.comcasttechnologysolutions.com/",
+            "alt": "",
+            "ariaLabel": "Go to Comcast website in a new tab"
+        }
+    ]
+}

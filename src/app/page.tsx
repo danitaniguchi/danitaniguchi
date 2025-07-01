@@ -1,103 +1,190 @@
-import Image from "next/image";
+import Card from "@/components/Card";
+import CardHorizontal from "@/components/CardHorizontal";
+import ContactForm from "@/components/ContactForm";
+import data from "@/data/data.json";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import IconText from "@/components/IconText";
+import Pill from "@/components/Pill";
+import Section from "@/components/Section";
+import TextAndMedia from "@/components/TextAndMedia";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const year = new Date().getFullYear() - 2018;
+  const about = data.about.map((paragraph, index) => <p key={index}>{paragraph.replace("{year}", year.toString())}</p>);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+  return (
+    <div className="font-[family-name:var(--font-poppins)] min-h-screen">
+      <a href="#main-content" className="fixed top-0 left-[-1000px] hover:underline hover:underline-offset-4 focus:static">Skip to main content</a>
+      <Header/>
+      <main className="flex flex-col items-center sm:items-start" id="main-content">
+        <Hero/>
+        <Section sectionId="about">
+          <div className="col-span-12">
+            <h2 className="text-dPurple">
+              About me.
+            </h2>
+          </div>
+          <TextAndMedia 
+            src="/profile.jpeg"
+            alt="a photo of me wearing a blue blouse. I have long hair and wear glasses."
+            text={about}
+            imagePosition="left"
+          />
+        </Section>
+        <Section sectionId="skills" mode="dark dark:bg-gray-800 text-white">
+          <div className="col-span-12">
+            <h2 className="text-dPinkDark">
+                Skills
+            </h2>
+          </div>
+          <div className="col-span-12 md:col-span-4">
+            <IconText src="/front-end.png" alt="">
+              <h3>Frontend</h3>
+            </IconText>
+            <ul className="mt-4">
+              {data.skills.frontend.map((skill, index) => <li key={index}>{skill}</li>)}
+            </ul>
+          </div>
+          <div className="col-span-12 md:col-span-4">
+            <IconText src="/backend-coding.png" alt="">
+              <h3>Backend/Tools</h3>
+            </IconText>
+            <ul className="mt-4">
+              {data.skills.backend.map((skill, index) => <li key={index}>{skill}</li>)}
+            </ul>
+          </div>
+          <div className="col-span-12 md:col-span-4">
+            <IconText src="/web-development.png" alt="">
+              <h3>Dev Practices</h3>
+            </IconText>
+            <ul className="mt-4">
+              {data.skills.practices.map((skill, index) => <li key={index}>{skill}</li>)}
+            </ul>
+          </div>
+        </Section>
+        <Section sectionId="projects">
+          <div className="col-span-12">
+            <h2 className="text-dPurple">
+                Projects Highlights
+            </h2>
+          </div>
+          { data.projects.map((project, index) => 
+            <div key={index} className="col-span-12 md:col-span-6 lg:col-span-4">
+              <Card src={project.src} alt={project.alt} href={project.href} ariaLabel={project.ariaLabel}>
+                <div className="flex flex-col justify-between h-full">
+                  <div>
+                    <h3 className="mb-2">{project.name}</h3>
+                    <p>
+                      {project.description}
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    { project.skills.map ((skill, index) => <Pill key={index} text={skill} />) }
+                  </div>
+                </div>
+              </Card>
+            </div>
+          )}
+        </Section>
+        <Section sectionId="certifications">
+          <div className="col-span-12">
+            <h2 className="text-dPurple">
+                Certifications
+            </h2>
+          </div>
+          <div className="col-span-12 md:col-span-6 w-full">
+            <CardHorizontal src="/developer.svg" alt="" href="https://dev.acquia.com/person/community/daniela-taniguchi#4257225834-2084705551" ariaLabel="Go to Daniela's Drupal Developer Credential in a new tab">
+                <h3 className="mb-2">Drupal Developer</h3>
+                <p>
+                  Credential validating full-stack Drupal expertise, including site building, custom module development, and theming. Covers HTML, CSS, Twig, PHP, and Drupal APIs, with a strong focus on performance, security, and best practices in modern Drupal development.
+                </p>
+              </CardHorizontal>
+          </div>
+          <div className="col-span-12 md:col-span-6 w-full">
+            <CardHorizontal src="/front-end-specialist.svg" alt="" href="https://dev.acquia.com/person/community/daniela-taniguchi#4257225834-2084705551" ariaLabel="Go to Daniela's Drupal Front End Specialist Credential in a new tab">
+                <h3 className="mb-2">Drupal Front End Specialist</h3>
+                <p>
+                  Credential demonstrating advanced theming and front-end skills in Drupal. Covers custom theme development, Twig templating, layout configuration, and performance/security best practices using HTML, CSS, JavaScript, and PHP within the Drupal framework.
+                </p>
+              </CardHorizontal>
+          </div>
+        </Section>
+        <Section sectionId="contact" mode="dark dark:bg-gray-800 top-cut text-white">
+          <div className="col-span-12">
+            <h2 className="text-dPinkDark">
+                Contact
+            </h2>
+            <h3>Let's connect?</h3>
+          </div>
+          <div className="col-span-12 md:col-span-6 lg:col-span-5">
+            <div className="flex flex-col gap-8">
+              <IconText src="/InBug-Black.png" alt="">
+                <div className="flex flex-col">
+                  <h4>Linkedin</h4>
+                  <a 
+                    href="https://www.linkedin.com/in/danielataniguchi/" 
+                    aria-label="Go to Daniela Taniguchi's Linkedin" 
+                    target="_blank"
+                    className="hover:underline hover:underline-offset-4 outline-offset-4"
+                  >
+                      Daniela Taniguchi
+                  </a>
+                </div>              
+              </IconText>
+              <IconText src="/github-mark.png" alt="">
+                <div className="flex flex-col">
+                  <h4>Github</h4>
+                  <a 
+                    href="https://github.com/danitaniguchi" 
+                    aria-label="Go to Daniela Taniguchi's Github" 
+                    target="_blank"
+                    className="hover:underline hover:underline-offset-4 outline-offset-4"
+                  >
+                      danitaniguchi
+                  </a>
+                </div>              
+              </IconText>
+              <IconText src="/mail.png" alt="">
+                <div className="flex flex-col">
+                  <h4>Email</h4>
+                  <a 
+                    href="mailto:daniela.taniguchi@outlook.com" 
+                    aria-label="Send an email to daniela.taniguchi@outlook.com" 
+                    target="_blank" 
+                    className="hover:underline hover:underline-offset-4 outline-offset-4"
+                  >
+                      daniela.taniguchi@outlook.com
+                  </a>
+                </div>              
+              </IconText>
+              <IconText src="/resume.png" alt="">
+                <div className="flex flex-col">
+                  <h4>Resume</h4>
+                  <a
+                    href="/resume_Daniela-Taniguchi.pdf" 
+                    target="_blank" 
+                    className="hover:underline hover:underline-offset-4 outline-offset-4"
+                  >
+                    PDF Resume Daniela Taniguchi
+                  </a>
+                </div>              
+              </IconText>
+              <IconText src="/location.png" alt="">
+                <div className="flex flex-col">
+                  <h4>Location</h4>
+                  <p>Houston - Texas</p>
+                </div>              
+              </IconText>
+            </div>
+          </div>
+          <div className="col-span-12 md:col-span-6 lg:col-span-7 w-full">
+            <ContactForm />
+          </div>
+        </Section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 }

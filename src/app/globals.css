@@ -1,15 +1,39 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --dt-purple-dark: #9f67e5;
+  --dt-purple: #703cc2;
+  --dt-pink-dark: #ff6cab;
+  --dt-pink: #cc0f66;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-dPurple: var(--dt-purple);
+  --color-dPink: var(--dt-pink);
+  --color-dPurpleDark: var(--dt-purple-dark);
+  --color-dPinkDark: var(--dt-pink-dark);
+}
+
+@layer utilities {
+  @media (min-width: theme('screens.md')) {
+    .bottom-cut {
+      clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 80px), 0% 100%);
+    }
+
+    .top-cut {
+      clip-path: polygon(0% 0%, 100% 80px, 100% 100%, 0% 100%);
+    }
+
+    .top-bottom-cut {
+      clip-path: polygon(0% 0%, 100% 80px, 100% calc(100% - 80px), 0% 100%);
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +43,36 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 82px;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+p:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+h1, .h1 {
+  font-weight: bold;
+  font-size: 56px;
+}
+
+h2, .h2 {
+  font-weight: bold;
+  font-size: 36px;
+}
+
+h3, .h3 {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+h4, .h4 {
+  font-weight: bold;
+  font-size: 20px;
 }
