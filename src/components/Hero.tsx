@@ -3,7 +3,7 @@ import Button from "./Button";
 const Hero = () => {
     const year = new Date().getFullYear() - 2018;
     return (
-        <section className="w-full dark text-white bottom-cut">
+        <section className="w-full dark dark:text-white bottom-cut">
           <div className="min-h-[60vh] dark:bg-gray-800 flex ">
             <div className="w-full max-w-7xl m-auto px-8 py-10 flex gap-4 flex-col justify-center items-start">
                 <h1 className="leading-none">

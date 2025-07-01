@@ -40,6 +40,14 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --color-white: #000000;
+    --color-dPurple: #9f67e5;
+    --color-dPink: #ff6cab;
+
+    .dark {
+      --color-white: #ffffff;
+      --foreground: #171717;
+    }
   }
 }
 

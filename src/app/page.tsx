@@ -33,7 +33,7 @@ export default function Home() {
             imagePosition="left"
           />
         </Section>
-        <Section sectionId="skills" mode="dark dark:bg-gray-800 text-white">
+        <Section sectionId="skills" mode="dark dark:bg-gray-800 dark:text-white">
           <div className="col-span-12">
             <h2 className="text-dPinkDark">
                 Skills
@@ -111,7 +111,7 @@ export default function Home() {
               </CardHorizontal>
           </div>
         </Section>
-        <Section sectionId="contact" mode="dark dark:bg-gray-800 top-cut text-white">
+        <Section sectionId="contact" mode="dark dark:bg-gray-800 top-cut dark:text-white">
           <div className="col-span-12">
             <h2 className="text-dPinkDark">
                 Contact

@@ -9,7 +9,7 @@ const Footer = () => {
                             className="flex items-center gap-2 hover:underline hover:underline-offset-4 outline-offset-4"
                             href="#about"
                         >
-                        About me
+                        About
                         </a>
                     </li>
                     <li>
